@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, prettyDOM } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import axiosMock from 'axios'
 import { act } from 'react-dom/test-utils'
 import '@testing-library/jest-dom'
@@ -101,7 +101,7 @@ describe('<PokemonPage />', () => {
 
     expect(screen.getByTestId('stats')).toHaveTextContent('hp55attack55')
   })
-  //************************* */
+
   it('should render previous and next urls if they exist', async () => {
     axiosMock.get.mockResolvedValueOnce({ data: pokemonList })
 
@@ -116,7 +116,7 @@ describe('<PokemonPage />', () => {
     expect(screen.getByText('Previous')).toHaveAttribute('href', '/pokemon/ditto')
     expect(screen.getByText('Next')).toHaveAttribute('href', '/pokemon/vaporeon')
   })
-//******************* */
+
   it('should not render previous and next urls if none exist', async () => {
     axiosMock.get.mockResolvedValueOnce({ data: pokemonList })
 
