@@ -1,4 +1,4 @@
-name: Deployment pipeline
+name: cypress pipeline 
 
 on:
   push:
@@ -15,8 +15,12 @@ jobs:
           node-version: '20'
       - name: Install dependencies       
         run: npm install
-      - name: Check style        
-        run: npm run eslint
-      - name: Check tests        
-        run: npm run test
+      - name: Install dependencies       
+        run: npm run build
+      - name: e2e tests
+        uses: cypress-io/github-action@v5
+        with:
+          command: npm run test:e2e
+          start: npm run start-prod
+          wait-on: http://localhost:8080
       
