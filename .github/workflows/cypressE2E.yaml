@@ -19,8 +19,7 @@ jobs:
         run: npm run build
       - name: adding bus
         run: |
-          export DISPLAY=:99
-          /usr/bin/dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address
+          xvfb-run --server-args="-screen 0 1280x1024x24" 
       - name: e2e tests
         uses: cypress-io/github-action@v6
         with:
