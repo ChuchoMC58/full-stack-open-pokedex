@@ -8,8 +8,6 @@ on:
 jobs:
   simple_deployment_pipeline:    
     runs-on: ubuntu-22.04  
-    container:
-      image: cypress/base:latest
     steps:     
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,6 +17,10 @@ jobs:
         run: npm install    
       - name: build project       
         run: npm run build
+      - name: adding bus
+        run: |
+          export DISPLAY=:99
+          /usr/bin/dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address
       - name: e2e tests
         uses: cypress-io/github-action@v6
         with:
