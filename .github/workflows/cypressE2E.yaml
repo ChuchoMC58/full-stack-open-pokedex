@@ -20,9 +20,7 @@ jobs:
       - name: e2e tests
         uses: cypress-io/github-action@v6
         with:
-          browser: firefox
-          env:
-            ELECTRON_EXTRA_LAUNCH_ARGS: '--disable-gpu'
+          browser: firefox        
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:5000
