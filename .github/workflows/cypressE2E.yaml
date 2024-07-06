@@ -16,10 +16,7 @@ jobs:
       - name: Install dependencies       
         run: npm install    
       - name: build project       
-        run: npm run build
-      - name: adding bus
-        run: |
-          xvfb-run --server-args="-screen 0 1280x1024x24" 
+        run: npm run builds      
       - name: e2e tests
         uses: cypress-io/github-action@v6
         with:
