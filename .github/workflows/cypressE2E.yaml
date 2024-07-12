@@ -29,7 +29,8 @@ jobs:
           wait-on: http://localhost:5000
   deploy:
     if: ${{ github.event_name == 'push' }} 
-    name: Deploy app
+    name: Deploy app & tagVersion
+    needs: [simple_deployment_pipeline]
     runs-on: ubuntu-22.04 
     concurrency: deploy-group    # optional: ensure only one action runs at a time
     steps:
