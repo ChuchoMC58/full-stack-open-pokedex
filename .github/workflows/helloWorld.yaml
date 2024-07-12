@@ -1,26 +1,26 @@
-name: Create PR on push
+# name: Create PR on push
 
-on:
-  push:
-    branches-ignore:
-      - main
+# on:
+#   push:
+#     branches-ignore:
+#       - main
 
-jobs:
-  create_pull_request:
-    runs-on: ubuntu-latest
+# jobs:
+#   create_pull_request:
+#     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v4
 
-    - name: Set up GitHub CLI
-      uses: ksivamuthu/actions-setup-gh-cli@2.24.3
+#     - name: Set up GitHub CLI
+#       uses: ksivamuthu/actions-setup-gh-cli@2.24.3
 
-    - name: Create pull request
-      run: |
-        branch_name=$(echo $GITHUB_REF | sed 's/refs\/heads\///')
-        gh pr create --base main --head $branch_name --title "Automated PR from $branch_name" --body "This pull request was created automatically from branch $branch_name."
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#     - name: Create pull request
+#       run: |
+#         branch_name=$(echo $GITHUB_REF | sed 's/refs\/heads\///')
+#         gh pr create --base main --head $branch_name --title "Automated PR from $branch_name" --body "This pull request was created automatically from branch $branch_name."
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       
