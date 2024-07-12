@@ -9,7 +9,8 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  simple_deployment_pipeline:    
+  simple_deployment_pipeline:   
+    name: tst app
     runs-on: ubuntu-22.04  
     steps:     
       - uses: actions/checkout@v4
@@ -29,11 +30,15 @@ jobs:
   deploy:
     if: ${{ github.event_name == 'push' }} 
     name: Deploy app
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 
     concurrency: deploy-group    # optional: ensure only one action runs at a time
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only
         env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}       
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
