@@ -14,11 +14,8 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up GitHub CLI
-      uses: ksivamuthu/actions-setup-gh-cli@<VERSION>
-       with:
-         version: 2.24.3
-    - run: |
-        gh version
+      uses: ksivamuthu/actions-setup-gh-cli@2.24.3
+
     - name: Create pull request
       run: |
         branch_name=$(echo $GITHUB_REF | sed 's/refs\/heads\///')
