@@ -1,22 +1,28 @@
-name: Hello World!
+name: Create PR on push
 
 on:
   push:
-    branches:
+    branches-ignore:
       - main
 
 jobs:
-  hello_world_job:
-    runs-on: ubuntu-20.04
+  create_pull_request:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Say hello
-        run: |
-          echo "Hello World!"
-      - name: Now It is
-        run: |
-          date 
-      - name: Dir Content
-        run: |
-         ls -l 
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up GitHub CLI
+      uses: actions/setup-gh@v2
+      with:
+        version: latest
+
+    - name: Create pull request
+      run: |
+        branch_name=$(echo $GITHUB_REF | sed 's/refs\/heads\///')
+        gh pr create --base main --head $branch_name --title "Automated PR from $branch_name" --body "This pull request was created automatically from branch $branch_name."
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       
