@@ -18,8 +18,5 @@ jobs:
         env:
           COMMITS: ${{ toJson(github.event.pull_request.title)}}
         run: echo "$COMMITS"
-      - name: test
-        env:
-          TEST: ${{ toJson(github.event.head_commit.message)}}
-        run: echo "$TEST"
+      
         
