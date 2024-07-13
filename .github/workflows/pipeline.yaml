@@ -19,4 +19,8 @@ jobs:
         run: npm run eslint
       - name: Check tests        
         run: npm run test
+      - name: test
+        env:
+          TEST: ${{ toJson(github.event.head_commit.message)}}
+        run: echo "$TEST"
       
