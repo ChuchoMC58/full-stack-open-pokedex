@@ -16,7 +16,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: commits
         env:
-          COMMITS: ${{ toJson(github.compare) }}
+          COMMITS: ${{ toJson(github.event.compare) }}
         run: echo "$COMMITS"
       - name: commit messages
         env:
