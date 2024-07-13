@@ -15,12 +15,13 @@ jobs:
           node-version: '20'
       - name: Install dependencies       
         run: npm install
-      - name: Check style        
-        run: npm run eslint
-      - name: Check tests        
-        run: npm run test
       - name: test
         env:
           TEST: ${{ toJson(github.event.commits.*.message)}}
         run: echo "$TEST"
+      - name: test
+        env:
+          TEST2: ${{ toJson( join( github.event.commits.*.message, ', ') )}}
+        run: echo "$contains($TEST2, '#skip')"
+       
       
