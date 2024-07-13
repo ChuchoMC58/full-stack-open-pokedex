@@ -21,6 +21,6 @@ jobs:
         run: npm run test
       - name: test
         env:
-          TEST: ${{ toJson(github)}}
+          TEST: ${{ toJson(github.event.commits.*.message)}}
         run: echo "$TEST"
       
