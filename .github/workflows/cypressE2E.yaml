@@ -28,8 +28,7 @@ jobs:
           start: npm run start-prod
           wait-on: http://localhost:5000
   deploy:
-    if: ${{ github.event_name == 'push' }} 
-    if: ${{ !contains(join( github.event.commits.*.message, ', '), '#skip') }} 
+    if: ${{ github.event_name == 'push' && !contains(join( github.event.commits.*.message, ', '), '#skip')}} 
     name: Deploy app & tagVersion
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-22.04 
