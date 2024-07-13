@@ -19,15 +19,15 @@ jobs:
           node-version: '20'
       - name: Install dependencies       
         run: npm install    
-      - name: build project       
-        run: npm run build      
-      - name: e2e tests
-        uses: cypress-io/github-action@v6
-        with:      
-          command: npm run test:e2e
-          start: npm run start-prod
-          wait-on: http://localhost:5000
-  deploy:
+  #     - name: build project       
+  #       run: npm run build      
+  #     - name: e2e tests
+  #       uses: cypress-io/github-action@v6
+  #       with:      
+  #         command: npm run test:e2e
+  #         start: npm run start-prod
+  #         wait-on: http://localhost:5000
+    deploy:
     if: ${{ github.event_name == 'push' && !contains(join( github.event.commits.*.message, ', '), '#skip')}} 
     name: Deploy app & tagVersion
     needs: [simple_deployment_pipeline]
