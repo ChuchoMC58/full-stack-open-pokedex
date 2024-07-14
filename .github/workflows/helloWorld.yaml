@@ -1,18 +1,18 @@
-name: Testing stuff
+# name: Testing stuff
 
-on:
-  pull_request:   
-    branches: [main]    
-    types: [opened, synchronize]
+# on:
+#   pull_request:   
+#     branches: [main]    
+#     types: [opened, synchronize]
 
-jobs:
-  a_test_job:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v1
-      - name: Try to fail
-        run: exit 1
-      - name: Print message if we don't fail
-        run: echo any2
+# jobs:
+#   a_test_job:
+#     runs-on: ubuntu-20.04
+#     steps:
+#       - uses: actions/checkout@v1
+#       - name: Try to fail
+#         run: exit 1
+#       - name: Print message if we don't fail
+#         run: echo any2
       
         
