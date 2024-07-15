@@ -11,7 +11,7 @@ jobs:
     name: Deploy app & tagVersion
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-22.04 
-    concurrency: deploy-group    # optional: ensure only one action runs at a time
+    concurrency: deploy-group    # optional: ensure only one action runs at a time2
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
