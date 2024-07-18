@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  simple_deployment_pipeline:   
+  cypress_pipeline:   
     runs-on: ubuntu-22.04  
     steps:     
       - uses: actions/checkout@v4
