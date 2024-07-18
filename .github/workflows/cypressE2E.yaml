@@ -1,4 +1,4 @@
-name: cypress pipeline 
+name: cypress_pipeline 
 
 on:
   pull_request:   
@@ -7,7 +7,6 @@ on:
 
 jobs:
   simple_deployment_pipeline:   
-    name: tst app
     runs-on: ubuntu-22.04  
     steps:     
       - uses: actions/checkout@v4
