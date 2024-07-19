@@ -9,9 +9,12 @@
 #   a_test_job:
 #     runs-on: ubuntu-20.04
 #     steps:
-#       - uses: actions/checkout@v1
-#       - name: Try to fail
-#         run: exit 1
-#       - name: Print message if we don't fail
-#         run: echo any2345      
-        
+#       - uses: actions/checkout@v4
+#       - name: github context
+#         env:
+#           GITHUB_CONTEXT: ${{ toJson(github) }}
+#         run: echo "$GITHUB_CONTEXT"
+#       - name: commits
+#         env:
+#           COMMITS: ${{ toJson(github.event.pull_request.title)}}
+#         run: echo "$COMMITS"
