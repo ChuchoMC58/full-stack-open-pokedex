@@ -5,7 +5,7 @@ on:
       - main    
 jobs:
   deploy:
-    if: ${{ github.event_name == 'push' && !contains(join( github.event.commits.*.message, ', '), '#skip')}} 
+    # if: ${{ github.event_name == 'push' && !contains(join( github.event.commits.*.message, ', '), '#skip')}} 
     name: Deploy app & tagVersion
     runs-on: ubuntu-22.04 
     concurrency: deploy-group    # optional: ensure only one action runs at a time
