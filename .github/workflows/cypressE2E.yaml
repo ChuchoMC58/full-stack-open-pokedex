@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  CI:   
+  cypress_pipeline :   
     name: tst app
     runs-on: ubuntu-22.04  
     steps:     
