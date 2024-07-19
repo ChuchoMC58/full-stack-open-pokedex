@@ -18,5 +18,3 @@
 #         env:
 #           COMMITS: ${{ toJson(github.event.pull_request.title)}}
 #         run: echo "$COMMITS"
-      
-        
