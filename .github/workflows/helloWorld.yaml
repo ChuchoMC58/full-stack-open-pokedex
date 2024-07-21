@@ -16,7 +16,7 @@ jobs:
         run: |
           REPO_URL=${{ github.repository }}
           COMMIT_HASH=${{ github.sha }}
-          COMMIT_URL="https://github.com/${REPO_URL}/commit/${COMMIT_HASH},  ${{ github.event.pull_request.user.login }} Broke the BUild :/"
+          COMMIT_URL="https://github.com/${REPO_URL}/commit/${COMMIT_HASH},  ${{ github.actor }} Broke the BUild :/"
           echo "Commit URL: $COMMIT_URL"
 
       # - name: Failing step
