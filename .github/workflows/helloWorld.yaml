@@ -5,7 +5,7 @@ on:
     branches: [main]    
     types: [opened, synchronize]
 
-jobs: ##2
+jobs: ##3
   a_test_job:
     runs-on: ubuntu-20.04
     steps:
