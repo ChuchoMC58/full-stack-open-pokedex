@@ -34,5 +34,5 @@ jobs:
         if: failure()
         with: 
             severity: error
-            details: ${{ steps.extract_commit.outputs.commit_url }}
+            details: https://github.com/${REPO_URL}/commit/${COMMIT_HASH}
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}   
