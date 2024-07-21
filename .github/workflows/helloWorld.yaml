@@ -10,6 +10,9 @@ jobs: ##3
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
+      - name: Failing step
+        id: demo
+        run: exit 1
       - name: Test Success
         uses: rjstone/discord-webhook-notify@v1.0.4 
         if: success()
