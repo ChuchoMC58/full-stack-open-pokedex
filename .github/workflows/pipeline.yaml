@@ -5,7 +5,8 @@ on:
     - cron: "*/6 * * * *"   # <=== Change this value
 
 jobs:
-  simple_deployment_pipeline:    
+  Cron-Schedule:    
+    runs-on: ubuntu-20.04
     steps:
     - name: Check the deployed service URL
       uses: jtalk/url-health-check-action@v4
