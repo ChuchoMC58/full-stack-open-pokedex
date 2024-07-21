@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - name: Log the current time
-      run: echo "Current time: $(date -u)"
+      run: |
+        echo "Current time: $(date -u)"
     - name: Check the deployed service URL
       uses: jtalk/url-health-check-action@v4
       with:
