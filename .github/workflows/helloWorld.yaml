@@ -34,5 +34,5 @@ jobs:
         if: failure()
         with: 
             severity: error
-            details: https://github.com/${{github.repository}}/commit/${{github.sha}}
+            details: https://github.com/${{github.repository}}/commit/${{github.sha}} , ${{ github.actor }} Broke the BUild :/
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}   
