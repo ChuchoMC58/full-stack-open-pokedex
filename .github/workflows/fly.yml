@@ -21,3 +21,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true     
           DEFAULT_BUMP: patch
+      - name: Successful deploy
+      uses: rjstone/discord-webhook-notify@v1.0.4 
+      if: success()
+      with:
+          severity: info
+          details: To https://full-stack-open-pokedex-small-grass-2339.fly.dev/ by ${{ github.actor }}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
