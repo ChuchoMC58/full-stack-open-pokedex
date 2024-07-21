@@ -9,12 +9,27 @@
 #   a_test_job:
 #     runs-on: ubuntu-20.04
 #     steps:
-#       - uses: actions/checkout@v4
-#       - name: github context
-#         env:
-#           GITHUB_CONTEXT: ${{ toJson(github) }}
-#         run: echo "$GITHUB_CONTEXT"
-#       - name: commits
-#         env:
-#           COMMITS: ${{ toJson(github.event.pull_request.title)}}
-#         run: echo "$COMMITS"
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Extract commit hash
+#         run: |
+#           REPO_URL=${{ github.repository }}
+#           COMMIT_HASH=${{ github.sha }}
+#           COMMIT_URL="https://github.com/${REPO_URL}/commit/${COMMIT_HASH} ,${{ github.event.pull_request.user.login }} Broke the BUild :/"
+#           echo "::set-output name=commit_url::$COMMIT_URL"
+
+#       - name: Test Success
+#         uses: rjstone/discord-webhook-notify@v1.0.4 
+#         if: success()
+#         with:
+#             severity: info
+#             details: To https://full-stack-open-pokedex-small-grass-2339.fly.dev/ by ${{ github.actor }}
+#             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+#       - name: Test Failure
+#         uses: rjstone/discord-webhook-notify@v1.0.4 
+#         if: failure()
+#         with: 
+#             severity: error
+#             details: https://github.com/${{github.repository}}/commit/${{github.sha}} , ${{ github.actor }} Broke the BUild :/
+#             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}   
