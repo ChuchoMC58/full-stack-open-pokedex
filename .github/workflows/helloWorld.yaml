@@ -14,8 +14,10 @@ jobs:
 
       - name: Extract commit hash
         run: |
+          REPO_URL=${{ github.repository }}
           COMMIT_HASH=${{ github.sha }}
-          echo "Commit hash: $COMMIT_HASH"
+          COMMIT_URL="https://github.com/${REPO_URL}/commit/${COMMIT_HASH}"
+          echo "Commit URL: $COMMIT_URL"
 
       # - name: Failing step
       #   id: demo
