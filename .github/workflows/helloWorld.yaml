@@ -5,15 +5,18 @@ on:
     branches: [main]    
     types: [opened, synchronize]
 
-jobs: ##3
+jobs:
   a_test_job:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v4
-      name: Extract commit hash
-      run: |
-        COMMIT_HASH=${{ github.sha }}
-        echo "Commit hash: $COMMIT_HASH"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract commit hash
+        run: |
+          COMMIT_HASH=${{ github.sha }}
+          echo "Commit hash: $COMMIT_HASH"
+
       # - name: Failing step
       #   id: demo
       #   run: exit 1
@@ -30,6 +33,4 @@ jobs: ##3
       #   with: 
       #       severity: error
       #       details: Test Failed!
-      #       webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-
-        
+      #       webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}   
