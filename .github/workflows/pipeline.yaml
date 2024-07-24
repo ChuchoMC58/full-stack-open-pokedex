@@ -2,7 +2,7 @@ name: Cron SChedule
 
 on:
   schedule:
-    - cron: "5 * * * *"   # <=== Change this value
+    - cron: "*/5 * * * *"   # <=== Change this value
   workflow_dispatch:
 
 jobs:
